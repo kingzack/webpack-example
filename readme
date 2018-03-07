@@ -1,0 +1,33 @@
+index.js 是入口文件;
+package.json 下的script对象的start是开发环境需要的 服务器;  build//查看进度 和颜色npmn
+对dist下的压缩
+执行 webpack --progress --colors -p   (对webpack.confg.js)执行 压缩;
+
+去掉第三方uglifyjs的警告()
+ new webpack.optimize.UglifyJsPlugin({
+          compress:{
+            warnings:false
+          }
+      })
+
+
+       new webpack.options.OccurentceOrderPlugin()
+      //优化id,名字,class
+
+
+      "build": "webpack --progress --colors --minify"//minify 是不希望在开发环境下用的;
+
+
+
+      在webpack.config 里设置 只有开发环境下进行这两项;
+
+      if (env === 'production') {
+        config.plugins = config.plugins.concat(
+          new webpack.optimize.UglifyJsPlugin({
+            compress: {
+              warnings: false
+            }
+          }),
+          new webpack.optimize.OccurenceOrderPlugin()
+        );
+      }
